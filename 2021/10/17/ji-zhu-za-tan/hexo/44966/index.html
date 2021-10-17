@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="go-micro注册中心源码解析, li5ch,github">
+    <meta name="keywords" content="hexo使用和主题设置, li5ch,github">
     <meta name="description" content="天将降大任于斯人也，必先苦其心志，劳其筋骨。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>go-micro注册中心源码解析 | 进击的超神</title>
+    <title>hexo使用和主题设置 | 进击的超神</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">go-micro注册中心源码解析</h1>
+                    <h1 class="description center-align post-title">hexo使用和主题设置</h1>
                 </div>
             </div>
         </div>
@@ -395,29 +395,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Go/">
-                                <span class="chip bg-color">Go</span>
-                            </a>
-                        
-                            <a href="/tags/Go-micro/">
-                                <span class="chip bg-color">Go-micro</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Go-micro%E6%BA%90%E7%A0%81/" class="post-category">
-                                Go-micro源码
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -457,29 +440,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> cache <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
-	registry<span class="token punctuation">.</span>Registry
-	opts Options
-
-	<span class="token comment">// registry cache</span>
-	sync<span class="token punctuation">.</span>RWMutex
-	cache   <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>registry<span class="token punctuation">.</span>Service
-	ttls    <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>time<span class="token punctuation">.</span>Time
-	watched <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">bool</span>
-
-	<span class="token comment">// used to stop the cache</span>
-	exit <span class="token keyword">chan</span> <span class="token builtin">bool</span>
-
-	<span class="token comment">// indicate whether its running</span>
-	running <span class="token builtin">bool</span>
-	<span class="token comment">// status of the registry</span>
-	<span class="token comment">// used to hold onto the cache</span>
-	<span class="token comment">// in failure state</span>
-	status <span class="token builtin">error</span>
-	<span class="token comment">// used to prevent cache breakdwon</span>
-	sg singleflight<span class="token punctuation">.</span>Group
-<span class="token punctuation">&#125;</span></code></pre>
-
+                <h3 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands.html">https://hexo.io/zh-cn/docs/commands.html</a></p>
+<h3 id="matery主题常见问题"><a href="#matery主题常见问题" class="headerlink" title="matery主题常见问题"></a>matery主题常见问题</h3><p><a target="_blank" rel="noopener" href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-3">https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-3</a></p>
+<ul>
+<li><p>命令主要用到的有两条：</p>
+</li>
+<li><p>修改配置后：hexo clean &amp; hexo g</p>
+</li>
+<li><p>部署到github：hexo d</p>
+</li>
+<li><p>新建博客：hexo new page –path _posts/技术杂谈/hexo.md “hexo使用和主题设置”(一般都要指定路径)</p>
+</li>
+</ul>
 
                 
             </div>
@@ -496,7 +468,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">li5ch</a>
+                    <a href="/about" rel="external nofollow noreferrer">永远的超神</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -506,7 +478,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://li5ch.github.io/2021/10/17/go-micro%E6%BA%90%E7%A0%81/go-micro%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">http://li5ch.github.io/2021/10/17/go-micro%E6%BA%90%E7%A0%81/go-micro%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</a>
+                    <a href="http://li5ch.github.io/2021/10/17/ji-zhu-za-tan/hexo/44966/">http://li5ch.github.io/2021/10/17/ji-zhu-za-tan/hexo/44966/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,7 +491,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">li5ch</a>
+                    <a href="/about" target="_blank">永远的超神</a>
                     !
                 </span>
             </div>
@@ -543,15 +515,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Go/">
-                                    <span class="chip bg-color">Go</span>
-                                </a>
-                            
-                                <a href="/tags/Go-micro/">
-                                    <span class="chip bg-color">Go-micro</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -723,7 +687,44 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/17/go-micro%E6%BA%90%E7%A0%81/go-micro%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83cache%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">
+                <a href="/2021/10/18/xue-xi-xin-de/kai-yuan-xiang-mu-xue-xi-xin-de/25729/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="习开源项目学习心得">
+                        
+                        <span class="card-title">习开源项目学习心得</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            永远的超神
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/17/go-micro-yuan-ma/go-micro-zhu-ce-zhong-xin-cache-yuan-ma-jie-xi/55739/">
                     <div class="card-image">
                         
                         
@@ -739,9 +740,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -763,59 +764,6 @@
                     
                     <a href="/tags/Go-micro/">
                         <span class="chip bg-color">Go-micro</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/08/20/Go/Go%E5%8D%95%E6%B5%8B/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Go单元测试实战">
-                        
-                        <span class="card-title">Go单元测试实战</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Go/" class="post-category">
-                                    Go
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">单元测试</span>
-                    </a>
-                    
-                    <a href="/tags/Go/">
-                        <span class="chip bg-color">Go</span>
                     </a>
                     
                 </div>
