@@ -457,7 +457,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> cache <span class="keyword">struct</span> &#123;</span><br><span class="line">	registry.Registry</span><br><span class="line">	opts Options</span><br><span class="line"></span><br><span class="line">	<span class="comment">// registry cache</span></span><br><span class="line">	sync.RWMutex</span><br><span class="line">	cache   <span class="keyword">map</span>[<span class="keyword">string</span>][]*registry.Service</span><br><span class="line">	ttls    <span class="keyword">map</span>[<span class="keyword">string</span>]time.Time</span><br><span class="line">	watched <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">bool</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// used to stop the cache</span></span><br><span class="line">	exit <span class="keyword">chan</span> <span class="keyword">bool</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// indicate whether its running</span></span><br><span class="line">	running <span class="keyword">bool</span></span><br><span class="line">	<span class="comment">// status of the registry</span></span><br><span class="line">	<span class="comment">// used to hold onto the cache</span></span><br><span class="line">	<span class="comment">// in failure state</span></span><br><span class="line">	status error</span><br><span class="line">	<span class="comment">// used to prevent cache breakdwon</span></span><br><span class="line">	sg singleflight.Group</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <pre class="language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> cache <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	registry<span class="token punctuation">.</span>Registry
+	opts Options
+
+	<span class="token comment">// registry cache</span>
+	sync<span class="token punctuation">.</span>RWMutex
+	cache   <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>registry<span class="token punctuation">.</span>Service
+	ttls    <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>time<span class="token punctuation">.</span>Time
+	watched <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">bool</span>
+
+	<span class="token comment">// used to stop the cache</span>
+	exit <span class="token keyword">chan</span> <span class="token builtin">bool</span>
+
+	<span class="token comment">// indicate whether its running</span>
+	running <span class="token builtin">bool</span>
+	<span class="token comment">// status of the registry</span>
+	<span class="token comment">// used to hold onto the cache</span>
+	<span class="token comment">// in failure state</span>
+	status <span class="token builtin">error</span>
+	<span class="token comment">// used to prevent cache breakdwon</span>
+	sg singleflight<span class="token punctuation">.</span>Group
+<span class="token punctuation">&#125;</span></code></pre>
 
 
                 

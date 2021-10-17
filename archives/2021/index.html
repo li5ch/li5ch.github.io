@@ -443,7 +443,13 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    12345678910111213141516171819202122type cache struct &#123;	registry.Registry	opts Options	// registry cache	sync.RWMute
+                                    type cache struct &#123;
+	registry.Registry
+	opts Options
+
+	// registry cache
+	sync.RWMutex
+	cache   map[string][]*regis
                                 
                             </div>
                             <div class="publish-info">
