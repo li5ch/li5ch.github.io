@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo使用和主题设置, li5ch,github">
+    <meta name="keywords" content="数据密集型应用系统设计读书笔记, li5ch,github">
     <meta name="description" content="天将降大任于斯人也，必先苦其心志，劳其筋骨。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo使用和主题设置 | 进击的超神</title>
+    <title>数据密集型应用系统设计读书笔记 | 进击的超神</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo使用和主题设置</h1>
+                    <h1 class="description center-align post-title">数据密集型应用系统设计读书笔记</h1>
                 </div>
             </div>
         </div>
@@ -395,12 +395,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">系统设计</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
+                                读书笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -409,7 +422,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-17
+                    2021-11-21
                 </div>
                 
 
@@ -440,21 +453,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands.html">https://hexo.io/zh-cn/docs/commands.html</a></p>
-<h3 id="matery主题常见问题"><a href="#matery主题常见问题" class="headerlink" title="matery主题常见问题"></a>matery主题常见问题</h3><p><a target="_blank" rel="noopener" href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-3">https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/#toc-heading-3</a></p>
-<ul>
-<li>命令主要用到的有两条：</li>
-<li>修改配置后：hexo clean &amp; hexo g</li>
-<li>部署到github：hexo d</li>
-<li>新建博客：hexo new page –path _posts/技术杂谈/hexo.md “hexo使用和主题设置”(一般都要指定路径)</li>
-<li>新建博客也可以直接建md（推荐），注意插入图片时需要做如下配置：<ul>
-<li>将<code>_config.yml</code> 文件中的<code>post_asset_folder</code> 选项设为 <code>true</code>（主要作用是执行new命令时会同步新建一个文件夹）</li>
-<li>typora中图像设置：偏好设置打开后设置图片复制为当前路径</li>
-<li>安装插件：npm install <a target="_blank" rel="noopener" href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a> –save</li>
-<li>最后：需要将复制在md的路径去掉直接保留文件名，这样本地加载 不出来但是服务器能加载出来</li>
-</ul>
-</li>
-</ul>
+                <h3 id="可靠性-amp-可拓展性-amp-可维护性"><a href="#可靠性-amp-可拓展性-amp-可维护性" class="headerlink" title="可靠性&amp;可拓展性&amp;可维护性"></a>可靠性&amp;可拓展性&amp;可维护性</h3><p>*<strong>可靠性（Reliability）*</strong></p>
+<p> 系统在<strong>困境（adversity）</strong>（硬件故障、软件故障、人为错误）中仍可正常工作（正确完成功能，并能达到期望的性能水准）。</p>
+<p>*<strong>可扩展性（Scalability）*</strong></p>
+<p> 有合理的办法应对系统的增长（数据量、流量、复杂性）（参阅“<a target="_blank" rel="noopener" href="https://vonng.gitbooks.io/ddia-cn/content/ch1.html#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7">可扩展性</a>”）</p>
+<p>*<strong>可维护性（Maintainability）*</strong></p>
+<p> 许多不同的人（工程师、运维）在不同的生命周期，都能高效地在系统上工作（使系统保持现有行为，并适应新的应用场景）。</p>
+<p>目前组合多个组件的数据系统架构</p>
+<p><img src="/2021/11/21/du-shu-bi-ji/idda-note/2/image-20211121152511933.png" alt="系统架构图"></p>
+<p>关注点除了API开发，还需要关注数据系统设计</p>
 
                 
             </div>
@@ -481,7 +488,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://li5ch.github.io/2021/10/17/ji-zhu-za-tan/hexo/44966/">http://li5ch.github.io/2021/10/17/ji-zhu-za-tan/hexo/44966/</a>
+                    <a href="http://li5ch.github.io/2021/11/21/du-shu-bi-ji/idda-note/2/">http://li5ch.github.io/2021/11/21/du-shu-bi-ji/idda-note/2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -518,7 +525,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">系统设计</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -686,17 +697,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/10/18/xue-xi-xin-de/kai-yuan-xiang-mu-xue-xi-xin-de/25729/">
+                <a href="/2021/11/21/du-shu-bi-ji/idda-note/2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="学习开源项目学习心得">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="数据密集型应用系统设计读书笔记">
                         
-                        <span class="card-title">学习开源项目学习心得</span>
+                        <span class="card-title">数据密集型应用系统设计读书笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -706,9 +718,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-18
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    读书笔记
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">系统设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/25/du-shu-bi-ji/building-microservices-bi-ji/1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Building Microservices读书笔记">
+                        
+                        <span class="card-title">Building Microservices读书笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -722,55 +784,10 @@
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/10/17/go-micro-yuan-ma/go-micro-zhu-ce-zhong-xin-cache-yuan-ma-jie-xi/55739/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="go-micro注册中心源码解析">
-                        
-                        <span class="card-title">go-micro注册中心源码解析</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Go-micro%E6%BA%90%E7%A0%81/" class="post-category">
-                                    Go-micro源码
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Go/">
-                        <span class="chip bg-color">Go</span>
-                    </a>
-                    
-                    <a href="/tags/Go-micro/">
-                        <span class="chip bg-color">Go-micro</span>
+                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                        <span class="chip bg-color">微服务</span>
                     </a>
                     
                 </div>
