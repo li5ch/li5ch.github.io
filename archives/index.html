@@ -711,22 +711,22 @@ Context
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2021/11/21/go/channel-yuan-ma-jie-xi/1/">
+                        <a href="/2021/11/21/go/channel-you-ya-guan-bi/1/">
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Channel源码解析">
+                                <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Channel优雅关闭">
                                 
-                                <span class="card-title">Channel源码解析</span>
+                                <span class="card-title">Channel优雅关闭</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Channel的基础知识channel 基于make初始化，当容量为0时，我们可以称通道为非缓冲通道，也就是不带缓冲的通道。而当容量大于0时，我们可以称为缓冲通道，也就是带有缓冲的通道
-ch1 := make(chan int, 3)
+                                    优雅关闭channel原则：channel closing principle
+不要从接收端关闭channel，也不要关闭有多个并发发送者的channel
 
-基
+M个receivers，一个sender，sender通过关闭data chann
                                 
                             </div>
                             <div class="publish-info">
@@ -773,22 +773,22 @@ ch1 := make(chan int, 3)
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2021/11/21/go/channel-you-ya-guan-bi/1/">
+                        <a href="/2021/11/21/go/channel-yuan-ma-jie-xi/1/">
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Channel优雅关闭">
+                                <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Channel源码解析">
                                 
-                                <span class="card-title">Channel优雅关闭</span>
+                                <span class="card-title">Channel源码解析</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    优雅关闭channel原则：channel closing principle
-不要从接收端关闭channel，也不要关闭有多个并发发送者的channel
+                                    Channel的基础知识channel 基于make初始化，当容量为0时，我们可以称通道为非缓冲通道，也就是不带缓冲的通道。而当容量大于0时，我们可以称为缓冲通道，也就是带有缓冲的通道
+ch1 := make(chan int, 3)
 
-M个receivers，一个sender，sender通过关闭data chann
+基
                                 
                             </div>
                             <div class="publish-info">
