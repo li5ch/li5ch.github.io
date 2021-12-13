@@ -409,7 +409,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-23
+                    2021-12-08
                 </div>
                 
 
@@ -441,12 +441,38 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li>中间件控制器</li>
-<li>路由</li>
-<li>Context</li>
-<li>分组控制</li>
+<li>在 Golang 中，每个 Goroutine 创建的时候，我们要使用 defer 和 recover 关键字为当前 Goroutine 捕获 panic 异常，并进行处理，否则，任意一处 panic 就会导致整个进程崩溃！</li>
 </ul>
-<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4>
+<pre class="language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>engine <span class="token operator">*</span>Engine<span class="token punctuation">)</span> <span class="token function">handleHTTPRequest</span><span class="token punctuation">(</span>c <span class="token operator">*</span>Context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token operator">...</span>
+	<span class="token comment">// Find root of the tree for the given HTTP method</span>
+	t <span class="token operator">:=</span> engine<span class="token punctuation">.</span>trees
+	<span class="token keyword">for</span> i<span class="token punctuation">,</span> tl <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> tl<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>method <span class="token operator">!=</span> httpMethod <span class="token punctuation">&#123;</span>
+			<span class="token keyword">continue</span>
+		<span class="token punctuation">&#125;</span>
+		root <span class="token operator">:=</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>root
+		<span class="token comment">// Find route in tree</span>
+		value <span class="token operator">:=</span> root<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>rPath<span class="token punctuation">,</span> c<span class="token punctuation">.</span>params<span class="token punctuation">,</span> c<span class="token punctuation">.</span>skippedNodes<span class="token punctuation">,</span> unescape<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> value<span class="token punctuation">.</span>params <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+			c<span class="token punctuation">.</span>Params <span class="token operator">=</span> <span class="token operator">*</span>value<span class="token punctuation">.</span>params
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">if</span> value<span class="token punctuation">.</span>handlers <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+			c<span class="token punctuation">.</span>handlers <span class="token operator">=</span> value<span class="token punctuation">.</span>handlers
+			c<span class="token punctuation">.</span>fullPath <span class="token operator">=</span> value<span class="token punctuation">.</span>fullPath
+			c<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			c<span class="token punctuation">.</span>writermem<span class="token punctuation">.</span><span class="token function">WriteHeaderNow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">return</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token operator">...</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span>
+	<span class="token punctuation">&#125;</span>
+
+<span class="token operator">...</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -472,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://li5ch.github.io/2021/11/23/gin/gin-yuan-ma-jie-xi/4/">http://li5ch.github.io/2021/11/23/gin/gin-yuan-ma-jie-xi/4/</a>
+                    <a href="http://li5ch.github.io/2021/12/08/go/go-dian-di/1/">http://li5ch.github.io/2021/12/08/go/go-dian-di/1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -682,7 +708,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/11/23/gin/gin-yuan-ma-jie-xi/4/">
+                <a href="/2021/12/08/go/go-dian-di/1/">
                     <div class="card-image">
                         
                         
@@ -699,7 +725,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
                             </span>
                         <span class="publish-author">
                             
@@ -720,13 +746,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/21/go/channel-yuan-ma-jie-xi/1/">
+                <a href="/2021/12/07/fen-bu-shi-bi-ji/0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Channel源码解析">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Channel源码解析</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -737,27 +763,15 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Go/" class="post-category">
-                                    Go
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            永远的超神
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Go/">
-                        <span class="chip bg-color">Go</span>
-                    </a>
-                    
                 </div>
                 
             </div>

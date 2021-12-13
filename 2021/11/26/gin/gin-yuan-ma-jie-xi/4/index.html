@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Channel源码解析, li5ch,github">
+    <meta name="keywords" content="li5ch,github">
     <meta name="description" content="天将降大任于斯人也，必先苦其心志，劳其筋骨。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Channel源码解析 | 进击的超神</title>
+    <title>进击的超神</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Channel源码解析</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -401,19 +401,14 @@
                                 <span class="chip bg-color">Go</span>
                             </a>
                         
+                            <a href="/tags/Gin/">
+                                <span class="chip bg-color">Gin</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Go/" class="post-category">
-                                Go
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -422,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-21
+                    2021-11-26
                 </div>
                 
 
@@ -453,28 +448,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Channel的基础知识"><a href="#Channel的基础知识" class="headerlink" title="Channel的基础知识"></a>Channel的基础知识</h3><p>channel 基于make初始化，当容量为0时，我们可以称通道为非缓冲通道，也就是不带缓冲的通道。而当容量大于0时，我们可以称为缓冲通道，也就是带有缓冲的通道</p>
-<pre class="language-go" data-language="go"><code class="language-go">ch1 <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span></code></pre>
+                <ul>
+<li>中间件控制器</li>
+<li>路由</li>
+<li>Context</li>
+<li>分组控制</li>
+</ul>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><blockquote>
+<p>路径参数和查询参数最佳实践：RESTful API设计的最佳实践是使用路径参数来标识一个或多个特定资源，而使用查询参数来对这些资源进行排序/过滤。</p>
+</blockquote>
+<p>基于httprouter实现的路由器，底层基于前缀树，<a target="_blank" rel="noopener" href="https://learnku.com/articles/27591">https://learnku.com/articles/27591</a></p>
+<p><img src="/2021/11/26/gin/gin-yuan-ma-jie-xi/4/image-20211130230140188.png" alt="image-20211130230140188"></p>
+<p>普通字典树每个节点存一个字符，router采用了压缩字典树，<img src="/2021/11/26/gin/gin-yuan-ma-jie-xi/4/image-20211130230215740.png" alt="image-20211130230215740"></p>
+<p>使用压缩字典树可以减少树的层数，同时因为每个节点上数据存储也比通常的字典树要多，所以程序的局部性较好（一个节点的path加载到cache即可进行多个字符的对比），从而对CPU缓存友好。</p>
+<ul>
+<li><p>node结构</p>
+<pre class="language-go" data-language="go"><code class="language-go">path<span class="token punctuation">:</span> 当前节点对应的路径中的字符串
 
-<p>基本特性：</p>
-<ul>
-<li>对于同一个通道，发送操作之间是互斥的，接收操作之间也是互斥的。</li>
-<li>发送操作和接收操作中对元素值的处理都是不可分割的。</li>
-<li>发送操作在完全完成之前会被阻塞。接收操作也是如此。</li>
-</ul>
-<p>注意：元素值从外界进入通道时会被复制。更具体地说，进入通道的并不是在接收操作符右边的那个元素值，而是它的副本；元素值从通道进入外界时会被移动。这个移动操作实际上包含了两步，第一步是生成正在通道中的这个元素值的副本，并准备给到接收方，第二步是删除在通道中的这个元素值。</p>
-<ul>
-<li>对于非缓冲通道，无论是发送操作还是接收操作，一开始执行就会被阻塞，直到配对的操作也开始执行，才会继续传递。由此可见，非缓冲通道是在用同步的方式传递数据。也就是说，只有收发双方对接上了，数据才会被传递。数据是直接从发送方复制到接收方的，中间并不会用非缓冲通道做中转。相比之下，缓冲通道则在用异步的方式传递数据。</li>
-</ul>
-<p>常见问题：</p>
-<ul>
-<li>发送和接受操作触发panic时机<ul>
-<li>对于一个已初始化，但并未关闭的通道来说，收发操作一定不会引发 panic。但是通道一旦关闭，再对它进行发送操作，就会引发 panic。</li>
-<li>关闭一个已经关闭了的通道，也会引发 panic</li>
-<li></li>
-</ul>
+wildChild<span class="token punctuation">:</span> 子节点是否为参数节点，即 wildcard node，或者说 <span class="token punctuation">:</span>id 这种类型的节点
+
+nType<span class="token punctuation">:</span> 当前节点类型，有四个枚举值<span class="token punctuation">:</span> 分别为 static<span class="token operator">/</span>root<span class="token operator">/</span>param<span class="token operator">/</span>catchAll。
+    static                   <span class="token comment">// 非根节点的普通字符串节点</span>
+    root                     <span class="token comment">// 根节点</span>
+    param                    <span class="token comment">// 参数节点，例如 :id</span>
+    catchAll                 <span class="token comment">// 通配符节点，例如 *anyway</span>
+
+indices：子节点索引，当子节点为非参数类型，即本节点的wildChild为<span class="token boolean">false</span>时，会将每个子节点的首字母放在该索引数组。说是数组，实际上是个<span class="token builtin">string</span>。</code></pre>
+
+<p>例子：</p>
+<p><img src="/2021/11/26/gin/gin-yuan-ma-jie-xi/4/image-20211201000832469.png" alt="image-20211201000832469"></p>
 </li>
 </ul>
+<pre class="language-go" data-language="go"><code class="language-go"><span class="token comment">// ServeHTTP conforms to the http.Handler interface.</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>engine <span class="token operator">*</span>Engine<span class="token punctuation">)</span> <span class="token function">ServeHTTP</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> req <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	c <span class="token operator">:=</span> engine<span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Context<span class="token punctuation">)</span>
+	c<span class="token punctuation">.</span>writermem<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+	c<span class="token punctuation">.</span>Request <span class="token operator">=</span> req
+	c<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	engine<span class="token punctuation">.</span><span class="token function">handleHTTPRequest</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+	engine<span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+</code></pre>
+
+<p>Gin重写了http的ServeHTTP，这个是接收请求时执行的handle方法</p>
 
                 
             </div>
@@ -501,7 +519,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://li5ch.github.io/2021/11/21/go/channel-yuan-ma-jie-xi/1/">http://li5ch.github.io/2021/11/21/go/channel-yuan-ma-jie-xi/1/</a>
+                    <a href="http://li5ch.github.io/2021/11/26/gin/gin-yuan-ma-jie-xi/4/">http://li5ch.github.io/2021/11/26/gin/gin-yuan-ma-jie-xi/4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,6 +559,10 @@
                             
                                 <a href="/tags/Go/">
                                     <span class="chip bg-color">Go</span>
+                                </a>
+                            
+                                <a href="/tags/Gin/">
+                                    <span class="chip bg-color">Gin</span>
                                 </a>
                             
                         </div>
@@ -714,6 +736,43 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2021/12/07/xue-xi-xin-de/dai-ma-jing-yan/2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            永远的超神
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2021/11/26/go/go-yu-yan-gui-fan/3/">
                     <div class="card-image">
                         
@@ -730,57 +789,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-26
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Go/" class="post-category">
-                                    Go
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Go/">
-                        <span class="chip bg-color">Go</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/21/go/channel-you-ya-guan-bi/1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Channel优雅关闭">
-                        
-                        <span class="card-title">Channel优雅关闭</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-26
                             </span>
                         <span class="publish-author">
                             
